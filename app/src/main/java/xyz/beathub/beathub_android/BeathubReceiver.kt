@@ -1,4 +1,4 @@
-package me.vanjavk.recenzo
+package xyz.beathub.beathub_android
 
 import android.content.BroadcastReceiver
 import android.content.Context
