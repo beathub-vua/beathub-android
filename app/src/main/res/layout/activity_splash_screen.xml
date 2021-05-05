@@ -14,7 +14,7 @@
         android:id="@+id/ivSplash"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/splashIvHeight"
+        android:layout_height="400dp"
         android:src="@drawable/star"/>
 
     <TextView
