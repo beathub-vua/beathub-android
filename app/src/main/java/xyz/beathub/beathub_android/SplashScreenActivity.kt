@@ -40,7 +40,7 @@ class SplashScreenActivity : AppCompatActivity() {
                 BeathubService.enqueueWork(this@SplashScreenActivity, this)
             }
         } else {
-            Toast.makeText(this, "R.string.please_connect_to_the_internet", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Please connect to internet.", Toast.LENGTH_SHORT).show()
             finish()
         }
 //       }
