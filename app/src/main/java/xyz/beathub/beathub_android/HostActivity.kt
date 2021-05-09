@@ -17,12 +17,12 @@ class HostActivity : AppCompatActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         setContentView(R.layout.activity_host)
 //setContentView(R.layout.activity_main)
-        initHamburgerMenu()
-        initNavigation()
+//        initHamburgerMenu()
+//        initNavigation()
     }
 
     private fun initHamburgerMenu() {
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 //        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
     }
 

@@ -16,6 +16,8 @@
         android:theme="@style/Theme.Beathubandroid">
         <activity
             android:name=".SplashScreenActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,6 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".HostActivity" />
+
+        <service
+            android:name=".BeathubService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
     </application>
 
 </manifest>

@@ -9,8 +9,8 @@ import android.os.Looper
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_splash_screen.*
 
-private const val DELAY : Long = 3000
-const val DATA_IMPORTED  = "me.vanjavk.recenzo.data_already_imported"
+private const val DELAY: Long = 3000
+
 class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +28,10 @@ class SplashScreenActivity : AppCompatActivity() {
 
 //        if (getBooleanPreference(DATA_IMPORTED)) {
 //            println("Data already imported!")
-//            Handler(Looper.getMainLooper()).postDelayed(
-//                {startActivity<HostActivity>()},
-//                DELAY
-//            )
+        Handler(Looper.getMainLooper()).postDelayed(
+                { startActivity<HostActivity>() },
+                DELAY
+        )
 //        } else {
         if (isOnline()) {
             // start service //refresh database
