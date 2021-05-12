@@ -32,24 +32,24 @@ class HostActivity : AppCompatActivity() {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.host_menu, menu)
-        return true
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        menuInflater.inflate(R.menu.host_menu, menu)
+//        return true
+//    }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            android.R.id.home -> {
-                toggleDrawer()
-                return true
-            }
-//            R.id.menuExit -> {
-//                exitApp()
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when(item.itemId) {
+//            android.R.id.home -> {
+//                toggleDrawer()
 //                return true
 //            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+////            R.id.menuExit -> {
+////                exitApp()
+////                return true
+////            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     private fun exitApp() {
 

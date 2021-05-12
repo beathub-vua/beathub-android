@@ -4,27 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="40dp"
+    android:paddingVertical="30dp"
     android:paddingHorizontal="40dp"
     android:id="@+id/loginLayout">
-
-
-    <TextView android:text = "Login" android:layout_width="wrap_content"
-        android:layout_height = "wrap_content"
-        android:id = "@+id/textview"
-        android:textSize = "35dp"
-        android:layout_alignParentTop = "true"
-        android:layout_centerHorizontal = "true" />
 
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "BeatHub"
         android:id = "@+id/textView"
-        android:layout_below = "@+id/textview"
         android:layout_centerHorizontal = "true"
         android:textColor = "#ff7aff24"
-        android:textSize = "35dp" />
+        android:textSize = "40sp"
+        android:paddingBottom="20dp"/>
 
     <EditText
         android:layout_width = "wrap_content"
@@ -43,7 +35,7 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:id="@+id/imageView"
         android:src="@drawable/logo"
         android:layout_below="@+id/textView"
@@ -65,20 +57,17 @@
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
         android:text="login"
         android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/textview"
-        android:layout_toStartOf="@+id/textview" />
+        android:layout_alignParentBottom="true" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:text="Register"
         android:id="@+id/button2"
+        android:layout_width="130dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/textview"
-        android:layout_toEndOf="@+id/textview" />
+        android:layout_alignRight="@+id/editText"
+        android:text="Register" />
 </RelativeLayout>
