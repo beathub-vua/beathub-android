@@ -10,6 +10,6 @@ class BeathubReceiver : BroadcastReceiver() { // BroadcastReceiver aint no Conte
 
     override fun onReceive(context: Context, intent: Intent) {
 
-        context.startActivity<LoginActivity>()
+        context.startActivity<HostActivity>()
     }
 }

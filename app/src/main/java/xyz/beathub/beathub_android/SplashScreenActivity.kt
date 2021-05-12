@@ -29,7 +29,7 @@ class SplashScreenActivity : AppCompatActivity() {
 //        if (getBooleanPreference(DATA_IMPORTED)) {
 //            println("Data already imported!")
         Handler(Looper.getMainLooper()).postDelayed(
-                { startActivity<HostActivity>() },
+                { startActivity<LoginActivity>() },
                 DELAY
         )
 //        } else {
