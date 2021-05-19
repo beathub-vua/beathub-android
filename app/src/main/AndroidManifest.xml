@@ -29,6 +29,7 @@
 
         <activity android:name=".HostActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".RegisterActivity" />
 
         <service
             android:name=".BeathubService"
