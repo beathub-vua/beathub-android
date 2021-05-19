@@ -27,11 +27,11 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Username too short.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (etPassword.text.toString()!=etConfirmPassword.text.toString()){
-                Toast.makeText(this, "Passwords are not the same.", Toast.LENGTH_SHORT).show()
+            if (etPassword.text.toString()!=etConfirmPassword.text.toString() || etPassword.text.toString().length<8){
+                Toast.makeText(this, "Passwords are not the same or too short.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (etEmail.text.toString().isValidEmail()){
+            if (etEmail.text.toString().isValidEmail() || etEmail.text.toString()!=""){
                 Toast.makeText(this, "E-mail is invalid.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
