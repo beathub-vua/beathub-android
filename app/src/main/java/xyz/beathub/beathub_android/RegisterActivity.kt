@@ -1,13 +1,20 @@
 package xyz.beathub.beathub_android
 
-import android.content.Intent
+import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.login_activity.*
 import kotlinx.android.synthetic.main.register_activity.*
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import okhttp3.ResponseBody.Companion.create
 import okio.IOException
+import org.json.JSONObject
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -17,8 +24,23 @@ class RegisterActivity : AppCompatActivity() {
 
         init()
     }
-
+    fun backgroundThreadShortToast(
+        context: Context?,
+        msg: String?
+    ) {
+        if (context != null && msg != null) {
+            Handler(Looper.getMainLooper()).post {
+                Toast.makeText(
+                    context,
+                    msg,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
     private fun init() {
+
+
         btnCancel.setOnClickListener {
             finish()
         }
@@ -31,32 +53,52 @@ class RegisterActivity : AppCompatActivity() {
                 Toast.makeText(this, "Passwords are not the same or too short.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (etEmail.text.toString().isValidEmail() || etEmail.text.toString()!=""){
+            if (etEmail.text.toString().isValidEmail()){
                 Toast.makeText(this, "E-mail is invalid.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
 
             var url = URL + "/accounts/register"
+            val jsonObject = JSONObject()
 
-            val formBody = FormBody.Builder()
-                .add("username", etUsername.text.toString())
-                .add("password", etPassword.text.toString())
-                .add("email", etEmail.text.toString())
+            jsonObject.put("username", etUsername.text.toString())
+            jsonObject.put("password", etPassword.text.toString())
+            jsonObject.put("email", etEmail.text.toString())
+
+
+            val client = OkHttpClient()
+            val mediaType = "application/json; charset=utf-8".toMediaType()
+            val body = jsonObject.toString().toRequestBody(mediaType)
+            val request: Request = Request.Builder()
+                .url(url)
+                .post(body)
                 .build()
 
-            var request = Request.Builder().url(url)
-                .post(formBody)
-                .build()
-
-            var client = OkHttpClient();
+//            val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
+//
+//            val formBody = FormBody.Builder()
+//                .add("username", etUsername.text.toString())
+//                .add("password", etPassword.text.toString())
+//                .add("email", etEmail.text.toString())
+//                .build()
+//
+//            val body: RequestBody = create(JSON, formBody)
+//
+//            var request = Request.Builder().url(url).addHeader("content-type","application/json")
+//                .post( formBody)
+//                .build()
+//
+//            var client = OkHttpClient();
             client.newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response){
-                    println(response.body?.string())
-                    if (response.body?.string()==""){
-                        Toast.makeText(baseContext, "Registration successful!", Toast.LENGTH_LONG).show()
+                    val resp = response.body?.string()
+                    println(resp)
+                    if (resp==""){
+                        backgroundThreadShortToast(getApplicationContext(),"Registration successful!")
                         finish()
                     }else{
-                        Toast.makeText(baseContext, response.body?.string(), Toast.LENGTH_LONG).show()
+
+                        backgroundThreadShortToast(getApplicationContext(),resp)
                     }
 
 
@@ -65,7 +107,7 @@ class RegisterActivity : AppCompatActivity() {
                 override fun onFailure(call: Call, e: IOException) {
                     println(e.message.toString())
 
-                    Toast.makeText(baseContext, e.message.toString(), Toast.LENGTH_LONG).show()
+                    backgroundThreadShortToast(getApplicationContext(),e.message.toString())
                 }
             })
 
