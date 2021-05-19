@@ -39,8 +39,6 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
     private fun init() {
-
-
         btnCancel.setOnClickListener {
             finish()
         }
@@ -65,7 +63,6 @@ class RegisterActivity : AppCompatActivity() {
             jsonObject.put("password", etPassword.text.toString())
             jsonObject.put("email", etEmail.text.toString())
 
-
             val client = OkHttpClient()
             val mediaType = "application/json; charset=utf-8".toMediaType()
             val body = jsonObject.toString().toRequestBody(mediaType)
@@ -74,21 +71,6 @@ class RegisterActivity : AppCompatActivity() {
                 .post(body)
                 .build()
 
-//            val JSON = "application/json; charset=utf-8".toMediaTypeOrNull()
-//
-//            val formBody = FormBody.Builder()
-//                .add("username", etUsername.text.toString())
-//                .add("password", etPassword.text.toString())
-//                .add("email", etEmail.text.toString())
-//                .build()
-//
-//            val body: RequestBody = create(JSON, formBody)
-//
-//            var request = Request.Builder().url(url).addHeader("content-type","application/json")
-//                .post( formBody)
-//                .build()
-//
-//            var client = OkHttpClient();
             client.newCall(request).enqueue(object : Callback {
                 override fun onResponse(call: Call, response: Response){
                     val resp = response.body?.string()
@@ -97,13 +79,10 @@ class RegisterActivity : AppCompatActivity() {
                         backgroundThreadShortToast(getApplicationContext(),"Registration successful!")
                         finish()
                     }else{
-
                         backgroundThreadShortToast(getApplicationContext(),resp)
                     }
 
-
                 }
-
                 override fun onFailure(call: Call, e: IOException) {
                     println(e.message.toString())
 
