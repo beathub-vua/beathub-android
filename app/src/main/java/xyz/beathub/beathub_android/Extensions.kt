@@ -6,8 +6,13 @@ import android.content.*
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.util.Patterns
 import android.view.View
 import android.view.animation.AnimationUtils
+
+val URL = "http://privateip1337.lets.ee:8080/api-0.0.1-SNAPSHOT"
+
+fun CharSequence?.isValidEmail() = !isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches()
 
 fun View.applyAnimation(resourceId: Int) =
     startAnimation(AnimationUtils.loadAnimation(context, resourceId))
