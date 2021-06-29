@@ -25,21 +25,21 @@ class LoginActivity : AppCompatActivity() {
 
     private fun init() {
         btnLogin.setOnClickListener {
-            if (etUsername.length() <= 0) {
+            if (etLoginUsername.length() <= 0) {
                 Toast.makeText(this, "Please enter username.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (etPassword.text.toString() != etConfirmPassword.text.toString() || etPassword.text.toString().length <= 0) {
+            if (etLoginPassword.text.toString().length <= 0) {
                 Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }
 
-            var url = URL + "/accounts/login"
+            var url = URL + "/login"
             val jsonObject = JSONObject()
 
-            jsonObject.put("username", etUsername.text.toString())
-            jsonObject.put("password", etPassword.text.toString())
+            jsonObject.put("username", etLoginUsername.text.toString())
+            jsonObject.put("password", etLoginPassword.text.toString())
 
 
             val client = OkHttpClient()
@@ -56,17 +56,19 @@ class LoginActivity : AppCompatActivity() {
                     println(resp)
                     if (resp==""){
 //                        backgroundThreadShortToast(getApplicationContext(),"Login successful!")
-                        backgroundThreadShortToast(getApplicationContext(),response.header("authorization"))
-                        finish()
+                        backgroundThreadShortToast(applicationContext,response.header("authorization"))
+                        //finish()
                     }else{
-                        backgroundThreadShortToast(getApplicationContext(),"Incorrect username and password combination.")
+                        backgroundThreadShortToast(applicationContext,"Incorrect username and password combination.")
+                        println(resp)
+
                     }
 
                 }
                 override fun onFailure(call: Call, e: IOException) {
                     println(e.message.toString())
 
-                    backgroundThreadShortToast(getApplicationContext(),e.message.toString())
+                    backgroundThreadShortToast(applicationContext,e.message.toString())
                 }
             })
         }
