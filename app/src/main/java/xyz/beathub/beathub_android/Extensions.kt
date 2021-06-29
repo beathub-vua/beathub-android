@@ -6,9 +6,27 @@ import android.content.*
 import android.graphics.Color
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.os.Handler
+import android.os.Looper
 import android.util.Patterns
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Toast
+
+fun backgroundThreadShortToast(
+    context: Context?,
+    msg: String?
+) {
+    if (context != null && msg != null) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(
+                context,
+                msg,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+}
 
 val URL = "http://privateip1337.lets.ee:8080/api-0.0.1-SNAPSHOT"
 

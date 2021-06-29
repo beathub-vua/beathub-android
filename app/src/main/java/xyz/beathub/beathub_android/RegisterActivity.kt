@@ -24,30 +24,17 @@ class RegisterActivity : AppCompatActivity() {
 
         init()
     }
-    fun backgroundThreadShortToast(
-        context: Context?,
-        msg: String?
-    ) {
-        if (context != null && msg != null) {
-            Handler(Looper.getMainLooper()).post {
-                Toast.makeText(
-                    context,
-                    msg,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        }
-    }
+
     private fun init() {
         btnCancel.setOnClickListener {
             finish()
         }
         btnRegisterSend.setOnClickListener {
-            if (etUsername.length()<5){
+            if (etUsername.length()<=2){
                 Toast.makeText(this, "Username too short.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (etPassword.text.toString()!=etConfirmPassword.text.toString() || etPassword.text.toString().length<8){
+            if (etPassword.text.toString()!=etConfirmPassword.text.toString() || etPassword.text.toString().length<=3){
                 Toast.makeText(this, "Passwords are not the same or too short.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
