@@ -28,7 +28,7 @@ fun backgroundThreadShortToast(
     }
 }
 
-val URL = "http://privateip1337.lets.ee:8080/BeatHubApi-0.0.1-SNAPSHOT"
+val URL = "https://privateip1337.lets.ee:8443/api-0.0.1-SNAPSHOT"
 
 fun CharSequence?.isValidEmail() = !(!isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches())
 
