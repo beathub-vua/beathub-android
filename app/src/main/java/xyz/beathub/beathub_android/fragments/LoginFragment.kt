@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import okhttp3.*
@@ -21,8 +22,11 @@ import xyz.beathub.beathub_android.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
-
     private val binding get() = _binding!!
+
+    private val loginResultLiveData: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,13 +44,23 @@ class LoginFragment : Fragment() {
     }
 
     private fun init() {
+        loginResultLiveData.observe(this.viewLifecycleOwner){
+            if (it){
+//                RegisterFragmentDirections.actionRegisterToLogin()
+//                    .apply {
+//                        this.email = binding.etEmail.text.toString()
+//                    }
+//                    .let { findNavController().navigate(it) }
+            }
+        }
+
         binding.btnLogin.setOnClickListener {
             if (binding.etLoginUsername.length() <= 0) {
-                Toast.makeText(this, "Please enter username.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Please enter username.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (binding.etLoginPassword.text.toString().length <= 0) {
-                Toast.makeText(this, "Please enter password.", Toast.LENGTH_SHORT)
+            if (binding.etLoginPassword.text.toString().isEmpty()) {
+                Toast.makeText(requireContext(), "Please enter password.", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
             }

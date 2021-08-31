@@ -15,7 +15,7 @@ import xyz.beathub.beathub_android.networking.ApiService
 
 
 object ApiModule {
-    private const val BASE_URL = "https://privateip1337.lets.ee:8443/api-0.0.1-SNAPSHOT"
+    private const val BASE_URL = "https://privateip1337.lets.ee:8443/api-0.0.1-SNAPSHOT/"
 
     lateinit var retrofit: ApiService
 

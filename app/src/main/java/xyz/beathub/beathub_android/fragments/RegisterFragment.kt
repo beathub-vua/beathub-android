@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
@@ -23,8 +26,10 @@ import xyz.beathub.beathub_android.isValidEmail
 class RegisterFragment : Fragment() {
 
     private var _binding: FragmentRegisterBinding? = null
-
     private val binding get() = _binding!!
+
+    private val registrationResultLiveData: MutableLiveData<Boolean> by lazy { MutableLiveData<Boolean>() }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -42,6 +47,17 @@ class RegisterFragment : Fragment() {
 
 
     private fun init() {
+
+        registrationResultLiveData.observe(this.viewLifecycleOwner){
+            if (it){
+                RegisterFragmentDirections.actionRegisterToLogin()
+                    .apply {
+                        this.email = binding.etEmail.text.toString()
+                    }
+                    .let { findNavController().navigate(it) }
+            }
+        }
+
         binding.btnCancel.setOnClickListener {
             RegisterFragmentDirections.actionRegisterToLogin()
                 .apply {
@@ -54,7 +70,7 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(requireContext(), "Username too short.", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-            if (binding.etPassword.text.toString() != binding.etConfirmPassword.text.toString() || binding.etPassword.text.toString().length <= 3) {
+            if (binding.etPassword.text.toString() != binding.etConfirmPassword.text.toString() || binding.etPassword.text.toString().length <= 2) {
                 Toast.makeText(requireContext(), "Passwords are not the same or too short.", Toast.LENGTH_SHORT)
                     .show()
                 return@setOnClickListener
@@ -88,11 +104,8 @@ class RegisterFragment : Fragment() {
                             requireContext(),
                             "Registration successful!"
                         )
-                        RegisterFragmentDirections.actionRegisterToLogin()
-                            .apply {
-                                this.email = binding.etEmail.text.toString()
-                            }
-                            .let { findNavController().navigate(it) }
+                        registrationResultLiveData.postValue(true)
+
                     } else {
                         backgroundThreadShortToast(requireContext(), resp)
                     }
