@@ -28,8 +28,8 @@
 
 
         <activity android:name=".HostActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".fragments.LoginFragment" />
+        <activity android:name=".fragments.RegisterFragment" />
 
         <service
             android:name=".BeathubService"
