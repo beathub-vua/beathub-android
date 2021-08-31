@@ -7,6 +7,9 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="beathub_main">#ff7aff24</color>
-    <color name="beathub_main_dark">#009c0a</color>
+    <color name="beathub_2">#8CFF98</color>
+    <color name="beathub_3">#AAD922</color>
+    <color name="beathub_4">#6F7C12</color>
+    <color name="beathub_1">#483519</color>
+    <color name="beathub_5">#000000</color>
 </resources>

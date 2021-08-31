@@ -1,153 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/registerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="40dp"
-    android:paddingVertical="30dp">
+    android:background="@color/beathub_4">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
+        android:id="@+id/registerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:paddingBottom="24dp"
-        android:text="BeatHub"
-        android:textAlignment="center"
-        android:textColor="@color/beathub_main"
-        android:textSize="40sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="30dp"
+        android:background="@color/beathub_4">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:layout_marginVertical="24dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:hint="Username"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:endIconTint="@color/black"
-        app:errorEnabled="true"
-        app:hintTextColor="@color/black">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etUsername"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textColor="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="24dp"
+            android:text="BeatHub"
+            android:textAlignment="center"
+            android:textColor="@color/beathub_2"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:hint="Email"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:endIconTint="@color/black"
-        app:errorEnabled="true"
-        app:hintTextColor="@color/black">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginVertical="24dp"
+            android:src="@drawable/logo" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEmail"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/usernameInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:inputType="textEmailAddress"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="Username"
+            android:textColor="@color/beathub_2"
+            android:textColorHint="@color/beathub_2"
+            app:boxStrokeColor="@color/beathub_3"
+            app:endIconTint="@color/beathub_3"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/beathub_2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:hint="Password"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:endIconTint="@color/black"
-        app:errorEnabled="true"
-        app:hintTextColor="@color/black"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="@color/beathub_2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/emailInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:textColor="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="Email"
+            android:textColor="@color/beathub_2"
+            android:textColorHint="@color/beathub_2"
+            app:boxStrokeColor="@color/beathub_3"
+            app:endIconTint="@color/beathub_3"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/beathub_2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordConfirmInputLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:hint="Repeat password"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        app:boxStrokeColor="@color/black"
-        app:endIconTint="@color/black"
-        app:errorEnabled="true"
-        app:hintTextColor="@color/black"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/black">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/beathub_2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etConfirmPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:textColor="@color/black" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="Password"
+            android:textColor="@color/beathub_2"
+            android:textColorHint="@color/beathub_2"
+            app:boxStrokeColor="@color/beathub_3"
+            app:endIconTint="@color/beathub_3"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/beathub_2"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/beathub_3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/beathub_2" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/passwordConfirmInputLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:hint="Repeat password"
+            android:textColor="@color/beathub_2"
+            android:textColorHint="@color/beathub_2"
+            app:boxStrokeColor="@color/beathub_3"
+            app:endIconTint="@color/beathub_3"
+            app:errorEnabled="true"
+            app:hintTextColor="@color/beathub_2"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/beathub_3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/beathub_2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnRegisterSend"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="24dp"
-        android:layout_marginRight="24dp"
-        android:backgroundTint="@color/beathub_main_dark"
-        android:enabled="false"
-        android:letterSpacing="0.03"
-        android:text="Register"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        app:cornerRadius="50dp" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegisterSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:backgroundTint="@color/beathub_1"
+            android:letterSpacing="0.03"
+            android:text="Register"
+            android:textAllCaps="false"
+            android:textColor="@color/beathub_2"
+            app:cornerRadius="50dp" />
 
-    <Button
-        android:id="@+id/btnCancel"
-        android:visibility="gone"
-        android:layout_width="130dp"
-        android:layout_height="60dp"
-        android:text="Cancel" />
-</LinearLayout>
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:text="Cancel"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</ScrollView>
