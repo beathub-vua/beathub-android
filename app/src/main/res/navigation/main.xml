@@ -16,16 +16,29 @@
             app:argType="string"
             app:nullable="true" />
 
-<!--        <action-->
-<!--            android:id="@+id/action_login_to_shows"-->
-<!--            app:destination="@id/showsFragment"-->
-<!--            app:popUpTo="@id/loginFragment"-->
-<!--            app:popUpToInclusive="true" />-->
+        <action
+            android:id="@+id/action_login_to_repo"
+            app:destination="@id/repoFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
 
         <action
             android:id="@+id/action_login_to_register"
             app:destination="@id/registerFragment" />
 
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/repoFragment"
+        android:name="xyz.beathub.beathub_android.fragments.RepoFragment"
+        tools:layout="@layout/fragment_repo">
+
+        <action
+            android:id="@+id/action_logout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/repoFragment"
+            app:popUpToInclusive="true" />
 
     </fragment>
 
