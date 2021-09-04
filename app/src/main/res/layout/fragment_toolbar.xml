@@ -8,7 +8,7 @@
     android:layout_gravity="top"
     android:background="@color/white"
     android:elevation="20dp"
-    android:backgroundTint="@color/beathub_1">
+    android:backgroundTint="@color/beathub_buttons">
 
 
     <TextView
@@ -18,7 +18,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginHorizontal="16dp"
         android:text="Welcome, Marin!"
-        android:textColor="@color/beathub_2"
+        android:textColor="@color/beathub_text"
         android:textSize="20sp"/>
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -28,7 +28,7 @@
         android:layout_marginHorizontal="56dp"
         android:layout_gravity="center_vertical|right"
         android:src="@drawable/ic_logout"
-        android:tint="@color/beathub_3"
+        android:tint="@color/beathub_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
@@ -40,7 +40,7 @@
         android:layout_marginHorizontal="16dp"
         android:layout_gravity="center_vertical|right"
         android:src="@drawable/cogwheel"
-        android:tint="@color/beathub_3"
+        android:tint="@color/beathub_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />

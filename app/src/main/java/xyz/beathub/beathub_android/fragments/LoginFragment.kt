@@ -1,5 +1,6 @@
 package xyz.beathub.beathub_android.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,6 +17,7 @@ import okio.IOException
 import org.json.JSONObject
 import xyz.beathub.beathub_android.R
 import xyz.beathub.beathub_android.URL
+import xyz.beathub.beathub_android.USER_AUTH_KEY
 import xyz.beathub.beathub_android.backgroundThreadShortToast
 import xyz.beathub.beathub_android.databinding.FragmentLoginBinding
 
@@ -46,11 +48,10 @@ class LoginFragment : Fragment() {
     private fun init() {
         loginResultLiveData.observe(this.viewLifecycleOwner){
             if (it){
-//                RegisterFragmentDirections.actionRegisterToLogin()
-//                    .apply {
-//                        this.email = binding.etEmail.text.toString()
-//                    }
-//                    .let { findNavController().navigate(it) }
+                LoginFragmentDirections.actionLoginToRepo()
+                    .apply {
+                    }
+                    .let { findNavController().navigate(it) }
             }
         }
 
@@ -84,16 +85,21 @@ class LoginFragment : Fragment() {
                 override fun onResponse(call: Call, response: Response){
                     val resp = response.body?.string()
                     println(resp)
-                    if (resp==""){
-//                        backgroundThreadShortToast(getApplicationContext(),"Login successful!")
-                        backgroundThreadShortToast(requireContext(),response.header("authorization"))
-                        //finish()
+                    if (response.code == 200){
+                        with(requireActivity().getPreferences(Context.MODE_PRIVATE).edit()) {
+                            putString(
+                                USER_AUTH_KEY,
+                                response.header("authorization")
+                            )
+                            apply()
+                        }
+                        backgroundThreadShortToast(requireContext(),"Login successful!")
+                        loginResultLiveData.postValue(true)
+
                     }else{
                         backgroundThreadShortToast(requireContext(),"Incorrect username and password combination.")
                         println(resp)
-
                     }
-
                 }
                 override fun onFailure(call: Call, e: IOException) {
                     println(e.message.toString())

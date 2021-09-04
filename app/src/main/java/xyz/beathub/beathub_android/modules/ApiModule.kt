@@ -11,11 +11,12 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import xyz.beathub.beathub_android.USER_AUTH_KEY
 import xyz.beathub.beathub_android.networking.ApiService
 
 
 object ApiModule {
-    private const val BASE_URL = "https://privateip1337.lets.ee:8443/api-0.0.1-SNAPSHOT/"
+    private const val BASE_URL = "https://privateip1337.lets.ee:8443/BeatHubApi-0.0.1-SNAPSHOT/"
 
     lateinit var retrofit: ApiService
 
@@ -35,20 +36,11 @@ object ApiModule {
 
                 val request =
                     chain.request().newBuilder().apply {
-                            addHeader("token-type", "Bearer")
-                            addHeader(
-                                "access-token",
-                                sharedPref.getString("USER_AUTH_ACCESS_TOKEN_TYPE_KEY", "")
-                                    .orEmpty()
-                            )
-                            addHeader(
-                                "client",
-                                sharedPref.getString("USER_AUTH_CLIENT_TYPE_KEY", "").orEmpty()
-                            )
-                            addHeader(
-                                "uid",
-                                sharedPref.getString("USER_AUTH_UID_TYPE_KEY", "").orEmpty()
-                            )
+                        addHeader(
+                            "authorization ",
+                            sharedPref.getString(USER_AUTH_KEY, "")
+                                .orEmpty()
+                        )
                     }.build()
                 chain.proceed(request)
             })

@@ -6,10 +6,11 @@
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/drawable/ic_logout.xml" value="0.301025641025641" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/activity_splash_screen.xml" value="0.14260385005065856" />
-        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_login.xml" value="0.2391304347826087" />
+        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_register.xml" value="0.25" />
-        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_repo.xml" value="0.17255434782608695" />
+        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_repo.xml" value="0.33" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_toolbar.xml" value="0.25" />
+        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/item_repo.xml" value="0.67" />
       </map>
     </option>
   </component>
@@ -18,5 +19,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.67" />
+      </ProjectState>
+    </option>
   </component>
 </project>

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/beathub_4">
+    android:background="@color/beathub_background">
 
     <LinearLayout
         android:id="@+id/registerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/beathub_4"
+        android:background="@color/beathub_background"
         android:orientation="vertical"
         android:paddingHorizontal="40dp"
         android:paddingVertical="30dp">
@@ -23,7 +23,7 @@
             android:paddingBottom="24dp"
             android:text="BeatHub"
             android:textAlignment="center"
-            android:textColor="@color/beathub_2"
+            android:textColor="@color/beathub_text"
             android:textSize="40sp"
             android:textStyle="bold" />
 
@@ -39,24 +39,25 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/usernameInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:hint="Username"
-            android:textColor="@color/beathub_2"
-            android:textColorHint="@color/beathub_2"
-            app:boxStrokeColor="@color/beathub_3"
-            app:endIconTint="@color/beathub_3"
+            android:textColor="@color/beathub_text"
+            android:textColorHint="@color/beathub_text"
+            app:boxStrokeColor="@color/mtrl_textinput_default_box_stroke_color"
+            app:endIconTint="@color/beathub_text"
             app:errorEnabled="true"
-            app:hintTextColor="@color/beathub_2">
+            app:hintTextColor="@color/beathub_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:singleLine="true"
-                android:textColor="@color/beathub_2" />
+                android:textColor="@color/beathub_text" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,14 +68,14 @@
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
             android:hint="Password"
-            android:textColor="@color/beathub_2"
-            android:textColorHint="@color/beathub_2"
-            app:boxStrokeColor="@color/beathub_3"
-            app:endIconTint="@color/beathub_3"
+            android:textColor="@color/beathub_text"
+            android:textColorHint="@color/beathub_text"
+            app:boxStrokeColor="@color/beathub_text"
+            app:endIconTint="@color/beathub_text"
             app:errorEnabled="true"
-            app:hintTextColor="@color/beathub_2"
+            app:hintTextColor="@color/beathub_text"
             app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/beathub_3">
+            app:passwordToggleTint="@color/beathub_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLoginPassword"
@@ -82,7 +83,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:textColor="@color/beathub_2" />
+                android:textColor="@color/beathub_text" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -92,11 +93,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:backgroundTint="@color/beathub_1"
+            android:backgroundTint="@color/beathub_buttons"
             android:letterSpacing="0.03"
             android:text="Login"
             android:textAllCaps="false"
-            android:textColor="@color/beathub_2"
+            android:textColor="@color/beathub_text"
             app:cornerRadius="50dp" />
 
         <com.google.android.material.button.MaterialButton
@@ -105,11 +106,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="24dp"
-            android:backgroundTint="@color/beathub_1"
+            android:backgroundTint="@color/beathub_buttons"
             android:letterSpacing="0.03"
             android:text="Register"
             android:textAllCaps="false"
-            android:textColor="@color/beathub_2"
+            android:textColor="@color/beathub_text"
             app:cornerRadius="50dp" />
     </LinearLayout>
 

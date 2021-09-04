@@ -48,8 +48,8 @@ class RegisterFragment : Fragment() {
 
     private fun init() {
 
-        registrationResultLiveData.observe(this.viewLifecycleOwner){
-            if (it){
+        registrationResultLiveData.observe(this.viewLifecycleOwner) {
+            if (it) {
                 RegisterFragmentDirections.actionRegisterToLogin()
                     .apply {
                         this.email = binding.etEmail.text.toString()
@@ -71,7 +71,11 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
             if (binding.etPassword.text.toString() != binding.etConfirmPassword.text.toString() || binding.etPassword.text.toString().length <= 2) {
-                Toast.makeText(requireContext(), "Passwords are not the same or too short.", Toast.LENGTH_SHORT)
+                Toast.makeText(
+                    requireContext(),
+                    "Passwords are not the same or too short.",
+                    Toast.LENGTH_SHORT
+                )
                     .show()
                 return@setOnClickListener
             }
@@ -99,13 +103,12 @@ class RegisterFragment : Fragment() {
                 override fun onResponse(call: Call, response: Response) {
                     val resp = response.body?.string()
                     println(resp)
-                    if (resp == "") {
+                    if (response.code == 200) {
+                        registrationResultLiveData.postValue(true)
                         backgroundThreadShortToast(
                             requireContext(),
-                            "Registration successful!"
+                            resp
                         )
-                        registrationResultLiveData.postValue(true)
-
                     } else {
                         backgroundThreadShortToast(requireContext(), resp)
                     }

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
+import androidx.navigation.fragment.findNavController
 import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
 
 class RepoFragment : Fragment() {
@@ -29,7 +30,16 @@ class RepoFragment : Fragment() {
     }
 
     private fun initToolbar() {
-        TODO("Not yet implemented")
+        binding.logoutImage.setOnClickListener {
+            RepoFragmentDirections.actionLogout().let {
+                findNavController().navigate(it)
+            }
+        }
+//        binding.logoutImage.setOnClickListener {
+//            RepoFragmentDirections.actionLogout().let {
+//                findNavController().navigate(it)
+//            }
+//        }
     }
 
 
