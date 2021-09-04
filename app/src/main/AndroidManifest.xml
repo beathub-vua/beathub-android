@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Beathubandroid">
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".MainActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:label="@string/title_activity_login">
@@ -28,8 +28,6 @@
 
 
         <activity android:name=".HostActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
 
         <service
             android:name=".BeathubService"
