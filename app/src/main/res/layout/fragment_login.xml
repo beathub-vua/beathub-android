@@ -23,7 +23,7 @@
             android:paddingBottom="24dp"
             android:text="BeatHub"
             android:textAlignment="center"
-            android:textColor="@color/beathub_text"
+            android:textColor="@color/beathub_title"
             android:textSize="40sp"
             android:textStyle="bold" />
 
