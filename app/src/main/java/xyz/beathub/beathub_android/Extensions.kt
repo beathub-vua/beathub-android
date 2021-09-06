@@ -14,6 +14,7 @@ import android.view.animation.AnimationUtils
 import android.widget.Toast
 
 const val USER_AUTH_KEY = "USER_AUTH_KEY"
+const val USER_ID_KEY = "USER_ID_KEY"
 
 fun backgroundThreadShortToast(
     context: Context?,
@@ -31,6 +32,7 @@ fun backgroundThreadShortToast(
 }
 
 val URL = "https://privateip1337.lets.ee:8443/beathub"
+const val CONTEXT_URL = "beathub"
 
 fun CharSequence?.isValidEmail() = !(!isNullOrEmpty() && Patterns.EMAIL_ADDRESS.matcher(this).matches())
 

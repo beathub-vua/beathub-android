@@ -40,6 +40,31 @@
             app:popUpTo="@id/repoFragment"
             app:popUpToInclusive="true" />
 
+        <action
+            android:id="@+id/action_options"
+            app:destination="@id/optionsFragment"
+            app:popUpTo="@id/optionsFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/optionsFragment"
+        android:name="xyz.beathub.beathub_android.fragments.OptionsFragment"
+        tools:layout="@layout/fragment_options">
+
+        <action
+            android:id="@+id/action_logout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/repoFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_options"
+            app:destination="@id/optionsFragment"
+            app:popUpTo="@id/optionsFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
 
 

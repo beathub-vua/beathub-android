@@ -18,6 +18,7 @@ import org.json.JSONObject
 import xyz.beathub.beathub_android.R
 import xyz.beathub.beathub_android.URL
 import xyz.beathub.beathub_android.USER_AUTH_KEY
+import xyz.beathub.beathub_android.USER_ID_KEY
 import xyz.beathub.beathub_android.backgroundThreadShortToast
 import xyz.beathub.beathub_android.databinding.FragmentLoginBinding
 
@@ -90,6 +91,10 @@ class LoginFragment : Fragment() {
                             putString(
                                 USER_AUTH_KEY,
                                 response.header("authorization")
+                            )
+                            putString(
+                                USER_ID_KEY,
+                                response.header("id")
                             )
                             apply()
                         }

@@ -18,7 +18,7 @@
             android:name=".MainActivity"
             android:noHistory="true"
             android:screenOrientation="portrait"
-            android:label="@string/title_activity_login">
+            android:label="BeatHub">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

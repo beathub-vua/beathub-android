@@ -16,7 +16,7 @@ import xyz.beathub.beathub_android.networking.ApiService
 
 
 object ApiModule {
-    private const val BASE_URL = "https://privateip1337.lets.ee:8443/BeatHubApi-0.0.1-SNAPSHOT/"
+    private const val BASE_URL = "https://privateip1337.lets.ee:8443/"
 
     lateinit var retrofit: ApiService
 
@@ -37,7 +37,7 @@ object ApiModule {
                 val request =
                     chain.request().newBuilder().apply {
                         addHeader(
-                            "authorization ",
+                            "authorization",
                             sharedPref.getString(USER_AUTH_KEY, "")
                                 .orEmpty()
                         )

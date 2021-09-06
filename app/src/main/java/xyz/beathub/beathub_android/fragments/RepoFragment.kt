@@ -41,6 +41,19 @@ class RepoFragment : Fragment() {
 
     }
 
+    private fun initToolbar() {
+        binding.logoutImage.setOnClickListener {
+            RepoFragmentDirections.actionLogout().let {
+                findNavController().navigate(it)
+            }
+        }
+        binding.optionsImage.setOnClickListener {
+            RepoFragmentDirections.actionOptions().let {
+                findNavController().navigate(it)
+            }
+        }
+    }
+
     private fun initRecycler() {
         reposAdapter = RepoAdapter(REPOS.toList()) { item ->
 //            ShowsFragmentDirections.actionShowToDetails(
@@ -57,19 +70,6 @@ class RepoFragment : Fragment() {
         binding.reposRecyclerView.adapter = reposAdapter
 
 
-    }
-
-    private fun initToolbar() {
-        binding.logoutImage.setOnClickListener {
-            RepoFragmentDirections.actionLogout().let {
-                findNavController().navigate(it)
-            }
-        }
-//        binding.logoutImage.setOnClickListener {
-//            RepoFragmentDirections.actionLogout().let {
-//                findNavController().navigate(it)
-//            }
-//        }
     }
 
 
