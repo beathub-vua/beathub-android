@@ -1,5 +1,6 @@
 package xyz.beathub.beathub_android.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import xyz.beathub.beathub_android.USER_ID_KEY
+import xyz.beathub.beathub_android.USER_NAME_KEY
 import xyz.beathub.beathub_android.adapters.RepoAdapter
 import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
 import xyz.beathub.beathub_android.util.REPOS
@@ -42,6 +45,10 @@ class RepoFragment : Fragment() {
     }
 
     private fun initToolbar() {
+        val username = requireActivity().getPreferences(Context.MODE_PRIVATE).getString(
+            USER_NAME_KEY, "beathub")
+        binding.textView.text = "Welcome, $username"
+
         binding.logoutImage.setOnClickListener {
             RepoFragmentDirections.actionLogout().let {
                 findNavController().navigate(it)

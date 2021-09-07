@@ -1,10 +1,12 @@
 package xyz.beathub.beathub_android.fragments
 
+import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
@@ -45,7 +47,7 @@ class OptionsFragment : Fragment() {
 
         deleteResultLiveData.observe(this.viewLifecycleOwner){
             if (it){
-                OptionsFragmentDirections.logout()
+                OptionsFragmentDirections.actionLogout()
                     .apply {
                     }
                     .let { findNavController().navigate(it) }
@@ -70,26 +72,52 @@ class OptionsFragment : Fragment() {
     }
 
     private fun initDeleteButton() {
-        binding.btnDelete.setOnClickListener {
-            ApiModule.retrofit.delete(requireActivity().getPreferences(Context.MODE_PRIVATE).getString(
-                USER_ID_KEY, "20")
-                .orEmpty()).enqueue(object :
-                Callback<Void> {
-                override fun onResponse(
-                    call: Call<Void>,
-                    response: Response<Void>
-                ) {
-                    backgroundThreadShortToast(requireActivity(),"Account deleted successfully!")
-                    deleteResultLiveData.postValue(true)
+        val alertDialog: AlertDialog? = activity?.let {
+            val builder = AlertDialog.Builder(it)
 
+            builder.apply {
+                setMessage("Are you sure you want to delete your account?")
+                //setTitle("Account deletion")
+//                setItems(
+//                    arrayOf(
+//                        "Yes, I want to delete my account."
+//                    )
+//                ) { _, which ->
+//                    when (which) {
+//                        0 -> deleteAccount()
+//                    }
+//                }
+                setPositiveButton(
+                    "Delete"
+                ) { _, _ -> deleteAccount()
                 }
-                override fun onFailure(call: Call<Void>, t: Throwable) {
-                    backgroundThreadShortToast(requireActivity(),"Error!")
+                setNegativeButton(
+                    "Cancel"
+                ) { _, _ ->
                 }
-            })
-
-
-
+            }
+            builder.create()
         }
+        binding.btnDelete.setOnClickListener {
+            alertDialog?.show()
+        }
+    }
+    private fun deleteAccount(){
+        ApiModule.retrofit.delete(requireActivity().getPreferences(Context.MODE_PRIVATE).getString(
+            USER_ID_KEY, "-1")
+            .orEmpty()).enqueue(object :
+            Callback<Void> {
+            override fun onResponse(
+                call: Call<Void>,
+                response: Response<Void>
+            ) {
+                backgroundThreadShortToast(requireActivity(),"Account deleted successfully!")
+                deleteResultLiveData.postValue(true)
+
+            }
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                backgroundThreadShortToast(requireActivity(),"Error!")
+            }
+        })
     }
 }

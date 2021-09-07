@@ -15,6 +15,7 @@ import android.widget.Toast
 
 const val USER_AUTH_KEY = "USER_AUTH_KEY"
 const val USER_ID_KEY = "USER_ID_KEY"
+const val USER_NAME_KEY = "USER_NAME_KEY"
 
 fun backgroundThreadShortToast(
     context: Context?,
