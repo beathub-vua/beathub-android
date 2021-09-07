@@ -8,6 +8,7 @@
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/activity_main.xml" value="0.2028985507246377" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/activity_splash_screen.xml" value="0.14260385005065856" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_commit.xml" value="0.33" />
+        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_commitDetails.xml" value="0.25" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_login.xml" value="0.33" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_options.xml" value="0.25" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_register.xml" value="0.25" />
@@ -15,6 +16,7 @@
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/fragment_toolbar.xml" value="0.25" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/item_commit.xml" value="0.28854166666666664" />
         <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/item_repo.xml" value="0.67" />
+        <entry key="..\:/Users/vanjavk/Desktop/BEATHUB/beathub-android/app/src/main/res/layout/item_track.xml" value="0.23867753623188406" />
       </map>
     </option>
   </component>

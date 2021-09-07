@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beathub_background"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@color/white"
+        android:backgroundTint="@color/beathub_buttons"
+        android:elevation="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="top"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:textColor="@color/beathub_title"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="SKLADBA" />
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="16dp"
+                android:ellipsize="end"
+                android:gravity="bottom"
+                android:maxLines="4"
+                android:paddingBottom="16dp"
+                android:textColor="@color/beathub_title"
+                android:textSize="12sp"
+                tools:text="Decription: Označava glazbu koja ima svoje određeno trajanje, planiran početak i kraj. Iako se ovaj pojam često upotrebljava i ne treba daljnje pojašnjenje, u povijesti ili razvoju glazbe on je unio pravu prekretnicu." />
+
+
+            <TextView
+                android:id="@+id/commitTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="bottom"
+                android:paddingBottom="16dp"
+                android:textColor="@color/beathub_text"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:text="Blok-flauta addon" />
+
+
+            <TextView
+                android:id="@+id/tracksText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="bottom"
+                android:paddingBottom="8dp"
+                android:text="Tracks:"
+                android:textColor="@color/beathub_text"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reposRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingTop="4dp"
+        android:paddingBottom="16dp"
+        tools:listitem="@layout/item_track" />
+</LinearLayout>
