@@ -3,46 +3,47 @@ package xyz.beathub.beathub_android.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import xyz.beathub.beathub_android.databinding.ItemCommitBinding
-import xyz.beathub.beathub_android.models.Commit
+import xyz.beathub.beathub_android.databinding.ItemTrackBinding
+import xyz.beathub.beathub_android.models.Track
 
-class CommitAdapter(
-    private var items: List<Commit>,
-    private val onItemClickCallback: (Commit) -> Unit
-) : RecyclerView.Adapter<CommitAdapter.CommitViewHolder>() {
+class TrackAdapter(
+    private var items: List<Track>,
+    private val onItemClickCallback: (Track) -> Unit
+) : RecyclerView.Adapter<TrackAdapter.TrackViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommitViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrackViewHolder {
 
-        val binding = ItemCommitBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTrackBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return CommitViewHolder(binding)
+        return TrackViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
 
-    override fun onBindViewHolder(holder: CommitViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TrackViewHolder, position: Int) {
         holder.bind(items[position])
     }
 
-    fun setItems(commits: List<Commit>) {
+    fun setItems(tracks: List<Track>) {
         //val diffResult = DiffUtil.calculateDiff(ReviewDiff(items, reviews))
-        items = commits
+        items = tracks
         //diffResult.dispatchUpdatesTo(this)
         notifyDataSetChanged()
     }
 
-    fun addItem(commit: Commit) {
-        items = listOf(commit)+items
+    fun addItem(track: Track) {
+        items = listOf(track)+items
         notifyItemInserted(0)
     }
 
-    inner class CommitViewHolder(private val binding: ItemCommitBinding) :
+    inner class TrackViewHolder(private val binding: ItemTrackBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: Commit) {
-            binding.commitName.text = item.message
+        fun bind(item: Track) {
+            binding.trackName.text = item.trackName
+            binding.plugins.text = item.plugins.joinToString(", ") { it.name }
 //            binding.reviewContent.isVisible = !item.comment.isNullOrEmpty()
 //            binding.reviewContent.text = item.comment
 //            binding.reviewerName.text = item.user.email.getUsername()
@@ -53,9 +54,6 @@ class CommitAdapter(
 //            }else{
 //                binding.profileIconImage.setImageResource(R.drawable.ic_painting_art)
 //            }
-            binding.root.setOnClickListener {
-                onItemClickCallback(item)
-            }
 
         }
     }

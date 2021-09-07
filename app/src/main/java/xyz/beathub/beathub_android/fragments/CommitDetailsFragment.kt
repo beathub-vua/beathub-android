@@ -17,25 +17,27 @@ import retrofit2.Response
 import xyz.beathub.beathub_android.USER_NAME_KEY
 import xyz.beathub.beathub_android.adapters.CommitAdapter
 import xyz.beathub.beathub_android.adapters.RepoAdapter
+import xyz.beathub.beathub_android.adapters.TrackAdapter
 import xyz.beathub.beathub_android.backgroundThreadShortToast
 import xyz.beathub.beathub_android.databinding.FragmentCommitBinding
+import xyz.beathub.beathub_android.databinding.FragmentCommitDetailsBinding
 import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
 import xyz.beathub.beathub_android.models.Commit
 import xyz.beathub.beathub_android.models.Repo
 import xyz.beathub.beathub_android.modules.ApiModule
 
 
-class CommitFragment : Fragment() {
+class CommitDetailsFragment : Fragment() {
 
-    private var _binding: FragmentCommitBinding? = null
+    private var _binding: FragmentCommitDetailsBinding? = null
 
-    private var commitsAdapter: CommitAdapter? = null
+    private var tracksAdapter: TrackAdapter? = null
 
     private val binding get() = _binding!!
 
     private val commitResultLiveData: MutableLiveData<List<Commit>> by lazy { MutableLiveData<List<Commit>>() }
 
-    private val args: CommitFragmentArgs by navArgs()
+    private val args: CommitDetailsFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -43,7 +45,7 @@ class CommitFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCommitBinding.inflate(inflater, container, false)
+        _binding = FragmentCommitDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -54,9 +56,11 @@ class CommitFragment : Fragment() {
 
         binding.titleText.text = "${args.title}"
         binding.descriptionText.text = "${args.description}"
-
         commitResultLiveData.observe(this.viewLifecycleOwner) {
-            commitsAdapter?.setItems(it)
+            val commit = it.first { it.commitId == args.commitId.toInt() }
+            binding.commitTitle.text = commit.message
+            binding.tracksText.text = "Tracks: ${commit.tracks.size}"
+            tracksAdapter?.setItems(commit.tracks)
         }
 
         ApiModule.retrofit.getCommits(
@@ -72,6 +76,7 @@ class CommitFragment : Fragment() {
                     commitResultLiveData.postValue(commits)
                 }
             }
+
             override fun onFailure(call: Call<List<Commit>>, t: Throwable) {
                 backgroundThreadShortToast(requireActivity(), "Error!")
             }
@@ -97,22 +102,13 @@ class CommitFragment : Fragment() {
     }
 
     private fun initRecycler() {
-        commitsAdapter = CommitAdapter(emptyList()) { item ->
-            CommitFragmentDirections.actionCommitToDetails(
-                args.projectId,
-                item.commitId.toString(),
-                args.title,
-                args.description,
-            )
-                .let {
-                    findNavController().navigate(it)
-                }
+        tracksAdapter = TrackAdapter(emptyList()) { item ->
 
         }.apply {
             stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         }
         binding.reposRecyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.reposRecyclerView.adapter = commitsAdapter
+        binding.reposRecyclerView.adapter = tracksAdapter
 
 
     }
