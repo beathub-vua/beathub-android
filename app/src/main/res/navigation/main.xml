@@ -61,6 +61,10 @@
             android:name="commitId"
             app:argType="string" />
 
+        <argument
+            android:name="description"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_logout"
             app:destination="@id/loginFragment"

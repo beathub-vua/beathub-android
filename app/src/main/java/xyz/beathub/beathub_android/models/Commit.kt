@@ -7,8 +7,8 @@ import kotlinx.serialization.Serializable
 data class Commit (
     @SerialName("id")val commitId: Int = 0,
     @SerialName("projectName")var message: String,
-    @SerialName("description")val filePath: String,
-    @SerialName("dateCreated")val dateTime: String,
-    @SerialName("tracks")val tracks: String?,
+    @SerialName("filePath")val filePath: String,
+    @SerialName("dateTime")val dateTime: String,
+    @SerialName("tracks")val tracks: List<Track>,
     @SerialName("current")val current: Boolean,
 )

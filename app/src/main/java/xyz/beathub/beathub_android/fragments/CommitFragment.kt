@@ -18,6 +18,7 @@ import xyz.beathub.beathub_android.USER_NAME_KEY
 import xyz.beathub.beathub_android.adapters.CommitAdapter
 import xyz.beathub.beathub_android.adapters.RepoAdapter
 import xyz.beathub.beathub_android.backgroundThreadShortToast
+import xyz.beathub.beathub_android.databinding.FragmentCommitBinding
 import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
 import xyz.beathub.beathub_android.models.Commit
 import xyz.beathub.beathub_android.models.Repo
@@ -26,7 +27,7 @@ import xyz.beathub.beathub_android.modules.ApiModule
 
 class CommitFragment : Fragment() {
 
-    private var _binding: FragmentRepoBinding? = null
+    private var _binding: FragmentCommitBinding? = null
 
     private var commitsAdapter: CommitAdapter? = null
 
@@ -42,7 +43,7 @@ class CommitFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentRepoBinding.inflate(inflater, container, false)
+        _binding = FragmentCommitBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -52,6 +53,7 @@ class CommitFragment : Fragment() {
         initRecycler()
         commitResultLiveData.observe(this.viewLifecycleOwner) {
             commitsAdapter?.setItems(it)
+            binding.descriptionText.text = "${args.description}"
         }
 
         ApiModule.retrofit.getCommits(
@@ -78,18 +80,17 @@ class CommitFragment : Fragment() {
         val username = requireActivity().getPreferences(Context.MODE_PRIVATE).getString(
             USER_NAME_KEY, "beathub"
         )
-        binding.textView.text = "Welcome, $username"
 
-        binding.logoutImage.setOnClickListener {
-            RepoFragmentDirections.actionLogout().let {
-                findNavController().navigate(it)
-            }
-        }
-        binding.optionsImage.setOnClickListener {
-            RepoFragmentDirections.actionOptions().let {
-                findNavController().navigate(it)
-            }
-        }
+//        binding.logoutImage.setOnClickListener {
+//            RepoFragmentDirections.actionLogout().let {
+//                findNavController().navigate(it)
+//            }
+//        }
+//        binding.optionsImage.setOnClickListener {
+//            RepoFragmentDirections.actionOptions().let {
+//                findNavController().navigate(it)
+//            }
+//        }
     }
 
     private fun initRecycler() {

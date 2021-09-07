@@ -97,7 +97,8 @@ class RepoFragment : Fragment() {
     private fun initRecycler() {
         reposAdapter = RepoAdapter(emptyList()) { item ->
             RepoFragmentDirections.actionRepoToCommit(
-                item.repoId.toString()
+                item.repoId.toString(),
+                item.description
             )
                 .let {
                     findNavController().navigate(it)

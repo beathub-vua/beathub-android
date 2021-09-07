@@ -53,6 +53,9 @@ class RepoAdapter(
 //            }else{
 //                binding.profileIconImage.setImageResource(R.drawable.ic_painting_art)
 //            }
+            binding.root.setOnClickListener {
+                onItemClickCallback(item)
+            }
 
         }
     }

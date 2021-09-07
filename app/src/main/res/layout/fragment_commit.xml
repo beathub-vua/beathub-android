@@ -10,49 +10,40 @@
     <FrameLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="128dp"
         android:layout_gravity="top"
         android:background="@color/white"
         android:backgroundTint="@color/beathub_buttons"
         android:elevation="20dp">
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="320dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_vertical"
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="top"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
             android:ellipsize="end"
-            android:gravity="left"
             android:maxLines="4"
-            android:paddingLeft="16dp"
-            android:text=""
+            android:textColor="@color/beathub_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="SKLADBA" />
+
+        <TextView
+            android:id="@+id/descriptionText"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="16dp"
+            android:ellipsize="end"
+            android:gravity="bottom"
+            android:maxLines="4"
+            android:paddingBottom="16dp"
             android:textColor="@color/beathub_title"
             android:textSize="12sp"
             tools:text="Decription: Označava glazbu koja ima svoje određeno trajanje, planiran početak i kraj. Iako se ovaj pojam često upotrebljava i ne treba daljnje pojašnjenje, u povijesti ili razvoju glazbe on je unio pravu prekretnicu." />
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/logoutImage"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical|right"
-            android:layout_marginHorizontal="56dp"
-            android:src="@drawable/ic_logout"
-            android:tint="@color/beathub_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/optionsImage"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_gravity="center_vertical|right"
-            android:layout_marginHorizontal="16dp"
-            android:src="@drawable/cogwheel"
-            android:tint="@color/beathub_title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent" />
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
