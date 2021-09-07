@@ -1,6 +1,5 @@
 package xyz.beathub.beathub_android.fragments
 
-import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,13 +12,9 @@ import androidx.navigation.fragment.findNavController
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import xyz.beathub.beathub_android.USER_AUTH_KEY
 import xyz.beathub.beathub_android.USER_ID_KEY
-import xyz.beathub.beathub_android.adapters.RepoAdapter
 import xyz.beathub.beathub_android.backgroundThreadShortToast
 import xyz.beathub.beathub_android.databinding.FragmentOptionsBinding
-import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
-import xyz.beathub.beathub_android.models.networking.AccountResponse
 import xyz.beathub.beathub_android.modules.ApiModule
 
 class OptionsFragment : Fragment() {

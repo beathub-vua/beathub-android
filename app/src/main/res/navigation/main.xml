@@ -35,6 +35,33 @@
         tools:layout="@layout/fragment_repo">
 
         <action
+            android:id="@+id/action_repo_to_commit"
+            app:destination="@id/commitFragment" />
+
+        <action
+            android:id="@+id/action_logout"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/repoFragment"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_options"
+            app:destination="@id/optionsFragment"
+            app:popUpTo="@id/optionsFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/commitFragment"
+        android:name="xyz.beathub.beathub_android.fragments.CommitFragment"
+        tools:layout="@layout/fragment_commit">
+
+        <argument
+            android:name="commitId"
+            app:argType="string" />
+
+        <action
             android:id="@+id/action_logout"
             app:destination="@id/loginFragment"
             app:popUpTo="@id/repoFragment"

@@ -8,29 +8,33 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import xyz.beathub.beathub_android.USER_ID_KEY
 import xyz.beathub.beathub_android.USER_NAME_KEY
+import xyz.beathub.beathub_android.adapters.CommitAdapter
 import xyz.beathub.beathub_android.adapters.RepoAdapter
 import xyz.beathub.beathub_android.backgroundThreadShortToast
 import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
+import xyz.beathub.beathub_android.models.Commit
 import xyz.beathub.beathub_android.models.Repo
 import xyz.beathub.beathub_android.modules.ApiModule
 
 
-class RepoFragment : Fragment() {
+class CommitFragment : Fragment() {
 
     private var _binding: FragmentRepoBinding? = null
 
-    private var reposAdapter: RepoAdapter? = null
+    private var commitsAdapter: CommitAdapter? = null
 
     private val binding get() = _binding!!
 
-    private val repoResultLiveData: MutableLiveData<List<Repo>> by lazy { MutableLiveData<List<Repo>>() }
+    private val commitResultLiveData: MutableLiveData<List<Commit>> by lazy { MutableLiveData<List<Commit>>() }
+
+    private val args: CommitFragmentArgs by navArgs()
 
 
     override fun onCreateView(
@@ -38,10 +42,7 @@ class RepoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentRepoBinding.inflate(inflater, container, false)
-
-
         return binding.root
     }
 
@@ -49,27 +50,24 @@ class RepoFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
         initRecycler()
-        repoResultLiveData.observe(this.viewLifecycleOwner) {
-            reposAdapter?.setItems(it)
+        commitResultLiveData.observe(this.viewLifecycleOwner) {
+            commitsAdapter?.setItems(it)
         }
 
-        ApiModule.retrofit.getProjects(
-            requireActivity().getPreferences(Context.MODE_PRIVATE).getString(
-                USER_ID_KEY, "-1"
-            )
-                .orEmpty()
+        ApiModule.retrofit.getCommits(
+            args.commitId.toInt()
         ).enqueue(object :
-            Callback<List<Repo>> {
+            Callback<List<Commit>> {
             override fun onResponse(
-                call: Call<List<Repo>>,
-                response: Response<List<Repo>>
+                call: Call<List<Commit>>,
+                response: Response<List<Commit>>
             ) {
-                val repos = response.body()
-                if (repos != null) {
-                    repoResultLiveData.postValue(repos)
+                val commits = response.body()
+                if (commits != null) {
+                    commitResultLiveData.postValue(commits)
                 }
             }
-            override fun onFailure(call: Call<List<Repo>>, t: Throwable) {
+            override fun onFailure(call: Call<List<Commit>>, t: Throwable) {
                 backgroundThreadShortToast(requireActivity(), "Error!")
             }
         })
@@ -95,18 +93,13 @@ class RepoFragment : Fragment() {
     }
 
     private fun initRecycler() {
-        reposAdapter = RepoAdapter(emptyList()) { item ->
-            RepoFragmentDirections.actionRepoToCommit(
-                item.repoId.toString()
-            )
-                .let {
-                    findNavController().navigate(it)
-                }
+        commitsAdapter = CommitAdapter(emptyList()) { item ->
+
         }.apply {
             stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         }
         binding.reposRecyclerView.layoutManager = LinearLayoutManager(activity)
-        binding.reposRecyclerView.adapter = reposAdapter
+        binding.reposRecyclerView.adapter = commitsAdapter
 
 
     }
