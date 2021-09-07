@@ -51,9 +51,11 @@ class CommitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
         initRecycler()
+
+        binding.titleText.text = "${args.title}"
+        binding.descriptionText.text = "${args.description}"
         commitResultLiveData.observe(this.viewLifecycleOwner) {
             commitsAdapter?.setItems(it)
-            binding.descriptionText.text = "${args.description}"
         }
 
         ApiModule.retrofit.getCommits(

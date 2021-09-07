@@ -98,6 +98,7 @@ class RepoFragment : Fragment() {
         reposAdapter = RepoAdapter(emptyList()) { item ->
             RepoFragmentDirections.actionRepoToCommit(
                 item.repoId.toString(),
+                item.name,
                 item.description
             )
                 .let {
