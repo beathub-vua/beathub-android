@@ -18,8 +18,8 @@ interface ApiService {
     @DELETE("$CONTEXT_URL/accounts/{id}")
     fun delete(@Path("id") id: String): Call<Void>
 
-    @GET("$CONTEXT_URL/projects/{id}")
-    fun getProjects(@Path("id") id: String): Call<List<Repo>>
+    @GET("$CONTEXT_URL/projects")
+    fun getProjects(@Query("accountId") id: String): Call<List<Repo>>
 
     @GET("$CONTEXT_URL/commits")
     fun getCommits(@Query("projectId") id: Int): Call<List<Commit>>

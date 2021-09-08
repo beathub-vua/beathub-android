@@ -42,7 +42,7 @@ class CommitAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Commit) {
-            binding.commitName.text = item.message
+            binding.commitName.text = "Commit: "+item.message
 //            binding.reviewContent.isVisible = !item.comment.isNullOrEmpty()
 //            binding.reviewContent.text = item.comment
 //            binding.reviewerName.text = item.user.email.getUsername()

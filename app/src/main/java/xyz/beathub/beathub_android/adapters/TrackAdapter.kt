@@ -42,8 +42,8 @@ class TrackAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Track) {
-            binding.trackName.text = item.trackName
-            binding.plugins.text = item.plugins.joinToString(", ") { it.name }
+            binding.trackName.text = "Track: "+item.trackName
+            binding.plugins.text = "Plugins: "+item.plugins.joinToString(", ") { it.name.toString() }
 //            binding.reviewContent.isVisible = !item.comment.isNullOrEmpty()
 //            binding.reviewContent.text = item.comment
 //            binding.reviewerName.text = item.user.email.getUsername()

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="88dp"
+    android:layout_height="wrap_content"
+    android:minHeight="88dp"
     android:paddingBottom="8dp">
 
     <androidx.cardview.widget.CardView
@@ -34,7 +35,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="8dp"
-                android:text="SoneQ, Pitch, Fork"
+                android:layout_marginBottom="8dp"
+                android:text="Plugins: SoneQ, Plugins: SoneQ, Plugins: SoneQ, Plugins: SoneQ, Plugins: SoneQ, "
                 android:textColor="@color/beathub_text"
                 android:textSize="20sp" />
 
@@ -43,4 +45,4 @@
 
     </androidx.cardview.widget.CardView>
 
-</FrameLayout>
+</LinearLayout>

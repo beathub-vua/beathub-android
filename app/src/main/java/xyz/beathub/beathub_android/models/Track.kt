@@ -7,9 +7,10 @@ import kotlinx.serialization.Serializable
 data class Track (
     @SerialName("id")val trackId: Int = 0,
     @SerialName("trackName")var trackName: String,
-    @SerialName("trackRouteId")var trackRouteId: Int,
-    @SerialName("channels")var channels: Int,
-    @SerialName("playlist")val playlist: String?,
-    @SerialName("audioFiles")val audioFiles: String?,
+    @SerialName("trackRouteId")var trackRouteId: Int?,
+    @SerialName("channels")var channels: Int?,
+    @SerialName("playlist")val playlist: Playlist?,
+    @SerialName("audioFiles")val audioFiles: List<AudioFile>,
     @SerialName("plugins")val plugins: List<Plugin>,
+    @SerialName("commit")val commit: Int?,
 )

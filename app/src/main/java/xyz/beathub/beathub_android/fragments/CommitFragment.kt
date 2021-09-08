@@ -51,9 +51,8 @@ class CommitFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initToolbar()
         initRecycler()
-
-        binding.titleText.text = "${args.title}"
-        binding.descriptionText.text = "${args.description}"
+        binding.titleText.text = "Project title: ${args.title}"
+        binding.descriptionText.text = "Project description: ${args.description}"
 
         commitResultLiveData.observe(this.viewLifecycleOwner) {
             commitsAdapter?.setItems(it)

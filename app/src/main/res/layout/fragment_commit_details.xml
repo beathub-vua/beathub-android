@@ -42,12 +42,12 @@
                 android:layout_gravity="bottom"
                 android:layout_marginHorizontal="16dp"
                 android:ellipsize="end"
-                android:gravity="bottom"
+                android:gravity="top"
                 android:maxLines="4"
                 android:paddingBottom="16dp"
                 android:textColor="@color/beathub_title"
                 android:textSize="12sp"
-                tools:text="Decription: Označava glazbu koja ima svoje određeno trajanje, planiran početak i kraj. Iako se ovaj pojam često upotrebljava i ne treba daljnje pojašnjenje, u povijesti ili razvoju glazbe on je unio pravu prekretnicu." />
+                tools:text="Decription:u glazbe on je unio pravu prekretnicu." />
 
 
             <TextView

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/splashPaddingMain"
-    android:background="@color/black"
+    android:background="@color/beathub_background"
     tools:context=".SplashScreenActivity">
 
     <ImageView
@@ -15,15 +15,18 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="400dp"
-        android:src="@drawable/star"/>
+        android:src="@drawable/logo"/>
 
     <TextView
         android:id="@+id/tvSplash"
         android:text="BeatHub"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        android:textColor="@color/beathub_title"
+        android:textSize="40sp"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+
+        />
 
 </LinearLayout>

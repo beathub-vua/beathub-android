@@ -19,9 +19,7 @@ import xyz.beathub.beathub_android.adapters.CommitAdapter
 import xyz.beathub.beathub_android.adapters.RepoAdapter
 import xyz.beathub.beathub_android.adapters.TrackAdapter
 import xyz.beathub.beathub_android.backgroundThreadShortToast
-import xyz.beathub.beathub_android.databinding.FragmentCommitBinding
 import xyz.beathub.beathub_android.databinding.FragmentCommitDetailsBinding
-import xyz.beathub.beathub_android.databinding.FragmentRepoBinding
 import xyz.beathub.beathub_android.models.Commit
 import xyz.beathub.beathub_android.models.Repo
 import xyz.beathub.beathub_android.modules.ApiModule
@@ -54,13 +52,13 @@ class CommitDetailsFragment : Fragment() {
         initToolbar()
         initRecycler()
 
-        binding.titleText.text = "${args.title}"
-        binding.descriptionText.text = "${args.description}"
+        binding.titleText.text = "Project title: ${args.title}"
+        binding.descriptionText.text = "Project description: ${args.description}"
         commitResultLiveData.observe(this.viewLifecycleOwner) {
             val commit = it.first { it.commitId == args.commitId.toInt() }
-            binding.commitTitle.text = commit.message
+            binding.commitTitle.text = "Commit message: ${commit.message}"
             binding.tracksText.text = "Tracks: ${commit.tracks.size}"
-            tracksAdapter?.setItems(commit.tracks)
+            commit.tracks?.let { it1 -> tracksAdapter?.setItems(it1) }
         }
 
         ApiModule.retrofit.getCommits(

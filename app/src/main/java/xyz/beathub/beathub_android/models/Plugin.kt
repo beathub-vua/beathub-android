@@ -6,9 +6,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Plugin (
-    @SerialName("id")val pluginId: Int = 0,
-    @SerialName("uniqueId")var uniqueId: Int?,
-    @SerialName("routeId")var routeId: Int,
-    @SerialName("name")val name: String,
-    @SerialName("parameters")val parameters: String?,
+    @SerialName("code")val pluginId: Int?,
+    @SerialName("uniqueId")var uniqueId: String?,
+    @SerialName("routeId")var routeId: Int?,
+    @SerialName("name")val name: String?,
+    @SerialName("dllPath")val dllPath: String?,
+    @SerialName("parameters")val parameters: List<Parameter>,
+    @SerialName("track")val track: Int?,
+
 )
